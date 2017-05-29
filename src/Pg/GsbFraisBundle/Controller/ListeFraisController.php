@@ -19,7 +19,12 @@ class ListeFraisController extends Controller
                 // on demande toutes les clés, et on prend la première,
                 // les mois étant triés décroissants
             $lesCles = array_keys( $lesMois );
+            if($lesCles == null){
+                $moisASelectionner = null;
+            }
+            else{
             $moisASelectionner = $lesCles[0];
+            }
             return $this->render('PgGsbFraisBundle:ListeFrais:listemois.html.twig',
                 array('lesmois'=>$lesMois,'lemois'=>$moisASelectionner));
         }
