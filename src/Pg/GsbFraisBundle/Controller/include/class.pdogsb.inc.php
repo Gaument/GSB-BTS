@@ -56,13 +56,11 @@ class PdoGsb{
 	public function getInfosVisiteur($login, $mdp){
                 $req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from visiteur 
 		where visiteur.login=:log and visiteur.mdp=:md";
-		var_dump($req);
 		$stmt = PdoGsb::$monPdo->prepare($req);
                 $stmt->bindParam(':log', $login);
 		$stmt->bindParam(':md', $mdp);
                 $stmt->execute();
 		$ligne = $stmt->fetch();
-            //    var_dump($ligne);
 		return $ligne;
 	}
 
